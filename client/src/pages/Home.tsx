@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowUpLeft, Check, ChevronDown, Menu, X } from "lucide-react";
 import RequestModal from "@/components/RequestModal";
+import { Link } from "wouter";
 
 const heroImage = "/manus-storage/academix-hero_42b8925b.jpg";
 const symbolImage = "/manus-storage/academix-symbol_2728d762.png";
@@ -181,7 +182,7 @@ export default function Home() {
       </main>
 
       <RequestModal isOpen={requestOpen} onClose={() => setRequestOpen(false)} serviceName={selectedService} />
-      <footer className="site-footer"><div className="footer-brand"><img src={symbolImage} alt="" /><span>Academix<br /><small>Solution EDU</small></span></div><p>مسار أوضح للتعلّم والعمل الأكاديمي.</p><div className="footer-meta"><span>© 2026 Academix</span><a href="#top">العودة للأعلى ↑</a></div></footer>
+      <footer className="site-footer"><div className="footer-brand"><img src={symbolImage} alt="" /><span>Academix<br /><small>Solution EDU</small></span></div><p>حلول أكاديمية وتقنية متكاملة لنجاحك.</p><div className="footer-meta"><Link href="/privacy">سياسة الخصوصية</Link><Link href="/terms">شروط الاستخدام</Link><a href="#top">العودة للأعلى ↑</a></div></footer>
     </div>
   );
 }
