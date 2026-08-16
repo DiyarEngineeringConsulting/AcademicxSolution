@@ -1,6 +1,7 @@
 /* Design direction: Editorial Signal Pulse — Arabic-first RTL, dark hero, warm paper content, coral pulse accent, asymmetric service path, touch-first interactions. */
 import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowUpLeft, Check, ChevronDown, Menu, MoveLeft, X } from "lucide-react";
+import RequestModal from "@/components/RequestModal";
 
 const heroImage = "/manus-storage/academix-hero_42b8925b.jpg";
 const symbolImage = "/manus-storage/academix-symbol_2728d762.png";
@@ -53,6 +54,13 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeService, setActiveService] = useState<number | null>(0);
+  const [requestOpen, setRequestOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState("الخدمة");
+
+  const openRequest = (serviceName = "الخدمة") => {
+    setSelectedService(serviceName);
+    setRequestOpen(true);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -95,7 +103,7 @@ export default function Home() {
             <h1>حلول أكاديمية وتقنية<br /><em>متكاملة لنجاحك.</em></h1>
             <p className="hero-lede">نحن نقدم حلولاً شاملة تغطي جميع احتياجاتك الأكاديمية والتقنية، من حل الواجبات والمشاريع إلى تصميم المواقع والاستضافة. فريق متخصص وخبرة عميقة لضمان نجاحك.</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#contact">ابدأ من احتياجك <ArrowLeft size={18} /></a>
+              <button className="button button-primary" type="button" onClick={() => openRequest()}>ابدأ من احتياجك <ArrowLeft size={18} /></button>
               <a className="text-link light-link" href="#services">اكتشف الحلول <ArrowUpLeft size={17} /></a>
             </div>
           </div>
@@ -147,7 +155,7 @@ export default function Home() {
             {services.map((service, index) => {
               const active = activeService === index;
               return (
-                <button key={service.number} className={`service-card ${active ? "is-active" : ""}`} aria-pressed={active} onClick={() => setActiveService(active ? null : index)}>
+                <button key={service.number} className={`service-card ${active ? "is-active" : ""}`} aria-pressed={active} onClick={() => { setActiveService(active ? null : index); openRequest(service.title); }}>
                   <span className="service-number">{service.number}</span>
                   <span className="service-main"><span className="service-label">{service.label}</span><strong>{service.title}</strong><span className="service-tags">{service.tags.map(tag => <span key={tag}>{tag}</span>)}</span></span>
                   <span className="service-detail">{service.body}</span>
@@ -177,6 +185,7 @@ export default function Home() {
         </section>
       </main>
 
+      <RequestModal isOpen={requestOpen} onClose={() => setRequestOpen(false)} serviceName={selectedService} />
       <footer className="site-footer"><div className="footer-brand"><img src={symbolImage} alt="" /><span>Academix<br /><small>Solution EDU</small></span></div><p>مسار أوضح للتعلّم والعمل الأكاديمي.</p><div className="footer-meta"><span>© 2026 Academix</span><a href="#top">العودة للأعلى ↑</a></div></footer>
     </div>
   );
