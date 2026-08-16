@@ -1,6 +1,6 @@
 /* Design direction: Editorial Signal Pulse — Arabic-first RTL, dark hero, warm paper content, coral pulse accent, asymmetric service path, touch-first interactions. */
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowUpLeft, Check, ChevronDown, Menu, MoveLeft, X } from "lucide-react";
+import { ArrowLeft, ArrowUpLeft, Check, ChevronDown, Menu, X } from "lucide-react";
 import RequestModal from "@/components/RequestModal";
 
 const heroImage = "/manus-storage/academix-hero_42b8925b.jpg";
@@ -37,9 +37,19 @@ const originalFaqs = [
 ];
 
 const steps = [
-  ["01", "حدد احتياجك", "ابدأ بوصف مختصر لما تريد إنجازه أو فهمه."],
-  ["02", "نرتب الصورة", "نحوّل التفاصيل المتفرقة إلى مسار واضح وخطوة عملية."],
-  ["03", "تتحرك بثقة", "تخرج بخطة مفهومة يمكنك متابعتها وتطويرها."],
+  ["01", "تواصل معنا", "أرسل لنا تفاصيل احتياجاتك عبر الموقع أو واتساب"],
+  ["02", "تقييم الطلب", "نقيم احتياجاتك ونقدم لك عرض سعر مناسب"],
+  ["03", "التنفيذ السريع", "نبدأ العمل فوراً بسرعة واحترافية عالية"],
+  ["04", "التسليم والدعم", "نسلمك العمل مع ضمان الجودة والدعم المستمر"],
+];
+
+const portfolioItems = [
+  { title: "تصميم مواقع احترافية", category: "تطوير ويب", image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663649825384/D9RoQWq4hzNcuC2xHpmFx3/portfolio-website-design-fBHg5twLHpytJVjxdEAzw6.webp" },
+  { title: "لوحة تحكم تعليمية", category: "تطبيق تعليمي", image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663649825384/D9RoQWq4hzNcuC2xHpmFx3/portfolio-dashboard-education-bzX5y7twGGfkVgc7Edh2wt.webp" },
+  { title: "أبحاث أكاديمية", category: "محتوى أكاديمي", image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663649825384/D9RoQWq4hzNcuC2xHpmFx3/portfolio-research-academic-jWvF8fqSU9Y4HkKdudcnyT.webp" },
+  { title: "عروض تقديمية احترافية", category: "محتوى بصري", image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663649825384/D9RoQWq4hzNcuC2xHpmFx3/portfolio-presentation-i77VxXT8gtrqyiwSUFCYFQ.webp" },
+  { title: "تصميم جرافيكي إبداعي", category: "تصميم جرافيكي", image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663649825384/D9RoQWq4hzNcuC2xHpmFx3/portfolio-graphic-design-7wu4Q5GgGAgNwE2XmM4nE4.webp" },
+  { title: "منصة خدمات طلابية", category: "منصة تعليمية", image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663649825384/D9RoQWq4hzNcuC2xHpmFx3/portfolio-website-design-fBHg5twLHpytJVjxdEAzw6.webp" },
 ];
 
 function SignalMatrix({ index }: { index: string }) {
@@ -84,11 +94,13 @@ export default function Home() {
           <img src={symbolImage} alt="" className="brand-symbol" />
           <span className="brand-wordmark"><strong>Academix</strong><small>Solution EDU</small></span>
         </a>
-        <nav className={`desktop-nav ${menuOpen ? "is-open" : ""}`} aria-label="التنقل الرئيسي">
-          <a href="#services" onClick={closeMenu}>الحلول</a>
-          <a href="#method" onClick={closeMenu}>المنهج</a>
-          <a href="#about" onClick={closeMenu}>عن Academix</a>
-          <a className="nav-cta" href="#contact" onClick={closeMenu}>تواصل معنا <ArrowLeft size={16} /></a>
+        <nav id="main-nav" className={`desktop-nav ${menuOpen ? "is-open" : ""}`} aria-label="التنقل الرئيسي">
+          <a href="#services" onClick={closeMenu}>الخدمات</a>
+          <a href="#about" onClick={closeMenu}>عنّا</a>
+          <a href="#portfolio" onClick={closeMenu}>أعمالنا</a>
+          <a href="#how-it-works" onClick={closeMenu}>كيف نعمل</a>
+          <a href="#faq" onClick={closeMenu}>الأسئلة</a>
+          <button className="nav-cta" type="button" onClick={() => { closeMenu(); openRequest(); }}>اطلب الخدمة <ArrowLeft size={16} /></button>
         </nav>
         <button className="menu-toggle" type="button" aria-label={menuOpen ? "إغلاق القائمة" : "فتح القائمة"} aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(v => !v)}>
           {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -115,36 +127,6 @@ export default function Home() {
           <div className="hero-bottom"><span>SCROLL TO EXPLORE</span><span className="scroll-line" /></div>
         </section>
 
-        <section className="signal-strip" aria-label="مبادئ Academix">
-          <div className="signal-strip-inner">
-            <span>وضوح قبل التعقيد</span><i />
-            <span>خطوة بعد خطوة</span><i />
-            <span>تعلم يستمر معك</span><i />
-            <span>ACX / 2026</span>
-          </div>
-        </section>
-
-        <section className="paper-section intro-section" id="about" style={{ backgroundImage: `linear-gradient(rgba(244,238,231,.96),rgba(244,238,231,.96)), url(${paperTexture})` }}>
-          <div className="section-kicker"><SignalMatrix index="01" /><span>THE ACADEMIX APPROACH</span></div>
-          <div className="intro-layout">
-            <h2>حين يصبح<br /><span>التعلّم أوضح،</span><br />يتقدّم أسرع.</h2>
-            <div className="intro-copy">
-              <p className="lead-copy">لا نضيف ضوضاء جديدة إلى مهمتك. نبدأ من السؤال الحقيقي، نرتّب عناصره، ثم نبني لك مسارًا تعرف من خلاله ماذا تفعل الآن.</p>
-              <p>Academix Solution EDU هي واجهة لحلول تعليمية منظمة، مصممة لتقريب الفكرة من التنفيذ وجعل كل مرحلة أكثر قابلية للفهم والمتابعة.</p>
-              <a className="text-link dark-link" href="#method">تعرّف على طريقتنا <MoveLeft size={17} /></a>
-            </div>
-          </div>
-          <div className="principle-note"><span>01</span><p>وضوح الفكرة ليس مرحلة إضافية؛ إنه أول أداة في طريق الإنجاز.</p></div>
-        </section>
-
-        <section className="original-about" id="why-us">
-          <div className="section-kicker"><SignalMatrix index="01B" /><span>WHY ACADEMIX</span></div>
-          <div className="original-about-grid">
-            <div><h2>لماذا <em>نحن؟</em></h2><p>ACADEMIX SOLUTION هي منصة متخصصة في تقديم حلول أكاديمية وتقنية متكاملة. نجمع بين الخبرة العميقة والتكنولوجيا الحديثة لضمان نجاحك.</p><div className="feature-list">{originalFeatures.map(feature => <span key={feature}><Check size={17} />{feature}</span>)}</div></div>
-            <div className="original-stats"><span><strong>500+</strong><small>عميل راضٍ</small></span><span><strong>1000+</strong><small>مشروع مكتمل</small></span><span><strong>98%</strong><small>معدل النجاح</small></span><span><strong>24/7</strong><small>دعم مستمر</small></span></div>
-          </div>
-        </section>
-
         <section className="services-section" id="services">
           <div className="section-heading dark-heading">
             <div className="section-kicker"><SignalMatrix index="02" /><span>AREAS OF SUPPORT</span></div>
@@ -166,21 +148,34 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="method-section" id="method">
-          <div className="method-heading"><div className="section-kicker"><SignalMatrix index="03" /><span>THE NEXT STEP</span></div><h2>ثلاث حركات.<br /><span>اتجاه واحد.</span></h2></div>
+        <section className="original-about" id="about" style={{ backgroundImage: `linear-gradient(rgba(235,227,219,.96),rgba(235,227,219,.96)), url(${paperTexture})` }}>
+          <div className="section-kicker"><SignalMatrix index="02" /><span>ABOUT ACADEMIX</span></div>
+          <div className="original-about-grid">
+            <div><h2>لماذا <em>نحن؟</em></h2><p>ACADEMIX SOLUTION هي منصة متخصصة في تقديم حلول أكاديمية وتقنية متكاملة. نجمع بين الخبرة العميقة والتكنولوجيا الحديثة لضمان نجاحك.</p><div className="feature-list">{originalFeatures.map(feature => <span key={feature}><Check size={17} />{feature}</span>)}</div></div>
+            <div className="original-stats"><span><strong>500+</strong><small>عميل راضٍ</small></span><span><strong>1000+</strong><small>مشروع مكتمل</small></span><span><strong>98%</strong><small>معدل النجاح</small></span><span><strong>24/7</strong><small>دعم مستمر</small></span></div>
+          </div>
+        </section>
+
+        <section className="portfolio-section" id="portfolio">
+          <div className="portfolio-heading"><div className="section-kicker"><SignalMatrix index="03" /><span>SELECTED WORK</span></div><h2>أعمالنا<br /><em>المتميزة.</em></h2><p>نماذج من المشاريع الناجحة التي أنجزناها لعملائنا</p></div>
+          <div className="portfolio-grid">{portfolioItems.map((item, index) => <article className={`portfolio-card portfolio-card-${index + 1}`} key={`${item.title}-${index}`}><img src={item.image} alt={item.title} loading="lazy" /><div className="portfolio-overlay"><span>{item.category}</span><h3>{item.title}</h3></div></article>)}</div>
+        </section>
+
+        <section className="method-section" id="how-it-works">
+          <div className="method-heading"><div className="section-kicker"><SignalMatrix index="04" /><span>HOW IT WORKS</span></div><h2>كيف<br /><span>نعمل؟</span></h2><p>عملية بسيطة وسهلة للحصول على خدماتنا المتميزة</p></div>
           <div className="steps-list">
             {steps.map(([number, title, body]) => <div className="step-row" key={number}><span className="step-number">{number}</span><div><h3>{title}</h3><p>{body}</p></div><Check size={20} className="step-check" /></div>)}
           </div>
         </section>
 
         <section className="faq-section" id="faq">
-          <div className="section-heading dark-heading"><div className="section-kicker"><SignalMatrix index="04" /><span>COMMON QUESTIONS</span></div><h2>أسئلة<br /><em>تتكرر.</em></h2><p>إجابات مباشرة على أكثر الأسئلة شيوعًا حول خدمات ACADEMIX SOLUTION.</p></div>
+          <div className="section-heading dark-heading"><div className="section-kicker"><SignalMatrix index="05" /><span>COMMON QUESTIONS</span></div><h2>أسئلة<br /><em>شائعة.</em></h2><p>إجابات مباشرة على أكثر الأسئلة شيوعًا حول خدمات ACADEMIX SOLUTION.</p></div>
           <div className="faq-list">{originalFaqs.map(([question, answer], index) => <details key={question} open={index === 0}><summary><span>{question}</span><ChevronDown size={19} /></summary><p>{answer}</p></details>)}</div>
         </section>
 
         <section className="contact-section" id="contact">
           <div className="contact-grid" aria-hidden="true" />
-          <div className="contact-content"><div className="section-kicker"><SignalMatrix index="05" /><span>CONTACT ACADEMIX</span></div><h2>تواصل <em>معنا.</em></h2><p>نحن هنا للإجابة على جميع استفساراتك والمساعدة في احتياجاتك.</p><div className="contact-links"><a href="tel:+967739750294"><strong>الهاتف</strong><span>+967 739 750 294</span></a><a href="mailto:academicx.solution@gmail.com"><strong>البريد الإلكتروني</strong><span>academicx.solution@gmail.com</span></a><a href="https://t.me/AcademicxSolution" target="_blank" rel="noreferrer"><strong>التليجرام</strong><span>AcademicxSolution</span></a><a href="https://wa.me/967739750294" target="_blank" rel="noreferrer"><strong>واتساب</strong><span>تواصل معنا مباشرة</span></a></div></div>
+          <div className="contact-content"><div className="section-kicker"><SignalMatrix index="06" /><span>CONTACT ACADEMIX</span></div><h2>تواصل <em>معنا.</em></h2><p>نحن هنا للإجابة على جميع استفساراتك والمساعدة في احتياجاتك.</p><div className="contact-links"><a href="tel:+967739750294"><strong>الهاتف</strong><span>+967 739 750 294</span></a><a href="mailto:academicx.solution@gmail.com"><strong>البريد الإلكتروني</strong><span>academicx.solution@gmail.com</span></a><a href="https://t.me/AcademicxSolution" target="_blank" rel="noreferrer"><strong>التليجرام</strong><span>AcademicxSolution</span></a><a href="https://wa.me/967739750294" target="_blank" rel="noreferrer"><strong>واتساب</strong><span>تواصل معنا مباشرة</span></a></div></div>
           <div className="contact-mark"><img src={symbolImage} alt="" /><span>ACADEMIX<br />SOLUTION EDU</span></div>
         </section>
       </main>
