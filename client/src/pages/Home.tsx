@@ -7,27 +7,32 @@ const symbolImage = "/manus-storage/academix-symbol_2728d762.png";
 const paperTexture = "/manus-storage/academix-paper-texture_df0d7ee1.jpg";
 
 const services = [
-  {
-    number: "01",
-    label: "CLARITY",
-    title: "توضيح المسار الأكاديمي",
-    body: "نرتّب الفكرة، المتطلبات، والخطوة التالية في صورة عملية تساعدك على البدء بثقة.",
-    tags: ["تنظيم", "توجيه"],
-  },
-  {
-    number: "02",
-    label: "RESEARCH",
-    title: "دعم البحث والكتابة",
-    body: "من السؤال الأول إلى هيكلة العمل، نساعدك على بناء مسار مفهوم يحترم هدفك الأكاديمي.",
-    tags: ["بحث", "هيكلة"],
-  },
-  {
-    number: "03",
-    label: "PROGRESS",
-    title: "حلول تعليمية قابلة للتقدم",
-    body: "أدوات وموارد مرتبة تقلل التشتت وتحوّل المهمة الكبيرة إلى مراحل يمكن متابعتها.",
-    tags: ["تخطيط", "تقدم"],
-  },
+  { number: "01", label: "ACADEMIC", title: "حل الواجبات", body: "حل شامل وسريع لجميع الواجبات الدراسية بجودة عالية", tags: ["واجبات", "دراسة"] },
+  { number: "02", label: "PROJECTS", title: "المشاريع", body: "تطوير مشاريع أكاديمية احترافية وفقاً لمتطلباتك", tags: ["تطوير", "تنفيذ"] },
+  { number: "03", label: "RESEARCH", title: "الأبحاث", body: "كتابة أبحاث علمية متقنة مع توثيق كامل", tags: ["أبحاث", "توثيق"] },
+  { number: "04", label: "EXAMS", title: "الاختبارات", body: "تحضير شامل وحل نماذج اختبارات سابقة", tags: ["تحضير", "نماذج"] },
+  { number: "05", label: "CONSULTING", title: "الاستشارات", body: "استشارات متخصصة في مختلف المجالات الأكاديمية", tags: ["استشارة", "توجيه"] },
+  { number: "06", label: "GRAPHIC DESIGN", title: "التصميم الجرافيكي", body: "تصاميم احترافية وجذابة لجميع احتياجاتك", tags: ["هوية", "تصميم"] },
+  { number: "07", label: "WEB DESIGN", title: "تصميم المواقع", body: "مواقع ويب حديثة وسريعة وسهلة الاستخدام", tags: ["ويب", "تجربة"] },
+  { number: "08", label: "HOSTING", title: "الاستضافة", body: "خدمات استضافة موثوقة وآمنة بأسعار منافسة", tags: ["أمان", "سرعة"] },
+];
+
+const originalFeatures = [
+  "فريق متخصص وذو خبرة عميقة",
+  "جودة عالية وسرعة في التنفيذ",
+  "دعم عملاء متميز 24/7",
+  "أسعار منافسة وشفافة",
+  "ضمان رضا العميل 100%",
+  "سرية تامة للمعلومات",
+];
+
+const originalFaqs = [
+  ["ما هي خدمات ACADEMIX SOLUTION؟", "نقدم مجموعة شاملة من الخدمات الأكاديمية والتقنية تشمل حل الواجبات والمشاريع والأبحاث والاختبارات والاستشارات والتصميم الجرافيكي وتصميم المواقع والاستضافة."],
+  ["كيف يمكنني طلب خدمة؟", "يمكنك طلب خدمة من خلال الموقع بملء نموذج الطلب أو التواصل معنا عبر واتساب مباشرة. سنرد عليك في أسرع وقت ممكن."],
+  ["ما هي أسعار الخدمات؟", "تختلف الأسعار حسب نوع الخدمة والمتطلبات. نقدم عروض مخصصة لكل عميل. تواصل معنا للحصول على عرض سعر مناسب."],
+  ["هل هناك ضمان على الخدمات؟", "نعم، نضمن رضا العميل 100%. إذا لم تكن راضياً عن الخدمة، سنعيد العمل أو نسترد أموالك."],
+  ["كم الوقت المستغرق لإنجاز الطلب؟", "يعتمد الوقت على نوع الخدمة والمتطلبات. معظم الطلبات تنجز خلال 24-48 ساعة. سنخبرك بالوقت المتوقع عند تقديم العرض."],
+  ["هل معلوماتي آمنة معكم؟", "نعم، نضمن سرية تامة لجميع معلومات العملاء. لا نشارك أي معلومات مع أطراف ثالثة."],
 ];
 
 const steps = [
@@ -87,8 +92,8 @@ export default function Home() {
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-content reveal">
             <div className="eyebrow"><SignalMatrix index="00" /><span>ACADEMIX / EDUCATION SOLUTIONS</span></div>
-            <h1>حلول أكاديمية<br /><em>تُوضح الطريق.</em></h1>
-            <p className="hero-lede">مساحة عملية للطلاب والباحثين وكل من يريد أن يحوّل التحدي الأكاديمي إلى خطوات مفهومة قابلة للتقدم.</p>
+            <h1>حلول أكاديمية وتقنية<br /><em>متكاملة لنجاحك.</em></h1>
+            <p className="hero-lede">نحن نقدم حلولاً شاملة تغطي جميع احتياجاتك الأكاديمية والتقنية، من حل الواجبات والمشاريع إلى تصميم المواقع والاستضافة. فريق متخصص وخبرة عميقة لضمان نجاحك.</p>
             <div className="hero-actions">
               <a className="button button-primary" href="#contact">ابدأ من احتياجك <ArrowLeft size={18} /></a>
               <a className="text-link light-link" href="#services">اكتشف الحلول <ArrowUpLeft size={17} /></a>
@@ -96,8 +101,9 @@ export default function Home() {
           </div>
           <div className="hero-aside reveal reveal-delay-2">
             <div className="hero-orbit"><span className="orbit-dot" /><span className="orbit-line" /><strong>01</strong></div>
-            <p>من الفكرة<br />إلى المسار.</p>
+            <p>من الفكرة<br />إلى النجاح.</p>
           </div>
+          <div className="hero-stats" aria-label="إحصاءات Academix"><span><strong>500+</strong><small>عميل راضٍ</small></span><span><strong>1000+</strong><small>مشروع مكتمل</small></span><span><strong>98%</strong><small>معدل النجاح</small></span></div>
           <div className="hero-bottom"><span>SCROLL TO EXPLORE</span><span className="scroll-line" /></div>
         </section>
 
@@ -121,6 +127,14 @@ export default function Home() {
             </div>
           </div>
           <div className="principle-note"><span>01</span><p>وضوح الفكرة ليس مرحلة إضافية؛ إنه أول أداة في طريق الإنجاز.</p></div>
+        </section>
+
+        <section className="original-about" id="why-us">
+          <div className="section-kicker"><SignalMatrix index="01B" /><span>WHY ACADEMIX</span></div>
+          <div className="original-about-grid">
+            <div><h2>لماذا <em>نحن؟</em></h2><p>ACADEMIX SOLUTION هي منصة متخصصة في تقديم حلول أكاديمية وتقنية متكاملة. نجمع بين الخبرة العميقة والتكنولوجيا الحديثة لضمان نجاحك.</p><div className="feature-list">{originalFeatures.map(feature => <span key={feature}><Check size={17} />{feature}</span>)}</div></div>
+            <div className="original-stats"><span><strong>500+</strong><small>عميل راضٍ</small></span><span><strong>1000+</strong><small>مشروع مكتمل</small></span><span><strong>98%</strong><small>معدل النجاح</small></span><span><strong>24/7</strong><small>دعم مستمر</small></span></div>
+          </div>
         </section>
 
         <section className="services-section" id="services">
@@ -151,9 +165,14 @@ export default function Home() {
           </div>
         </section>
 
+        <section className="faq-section" id="faq">
+          <div className="section-heading dark-heading"><div className="section-kicker"><SignalMatrix index="04" /><span>COMMON QUESTIONS</span></div><h2>أسئلة<br /><em>تتكرر.</em></h2><p>إجابات مباشرة على أكثر الأسئلة شيوعًا حول خدمات ACADEMIX SOLUTION.</p></div>
+          <div className="faq-list">{originalFaqs.map(([question, answer], index) => <details key={question} open={index === 0}><summary><span>{question}</span><ChevronDown size={19} /></summary><p>{answer}</p></details>)}</div>
+        </section>
+
         <section className="contact-section" id="contact">
           <div className="contact-grid" aria-hidden="true" />
-          <div className="contact-content"><div className="section-kicker"><SignalMatrix index="04" /><span>START WITH A QUESTION</span></div><h2>ما الخطوة التي<br /><em>تحتاجها الآن؟</em></h2><p>اكتب لنا باختصار ما تريد الوصول إليه، وسنبدأ من النقطة الأكثر وضوحًا.</p><a className="button button-primary" href="#services">راجع المسارات المتاحة <ArrowLeft size={18} /></a></div>
+          <div className="contact-content"><div className="section-kicker"><SignalMatrix index="05" /><span>CONTACT ACADEMIX</span></div><h2>تواصل <em>معنا.</em></h2><p>نحن هنا للإجابة على جميع استفساراتك والمساعدة في احتياجاتك.</p><div className="contact-links"><a href="tel:+967739750294"><strong>الهاتف</strong><span>+967 739 750 294</span></a><a href="mailto:academicx.solution@gmail.com"><strong>البريد الإلكتروني</strong><span>academicx.solution@gmail.com</span></a><a href="https://t.me/AcademicxSolution" target="_blank" rel="noreferrer"><strong>التليجرام</strong><span>AcademicxSolution</span></a><a href="https://wa.me/967739750294" target="_blank" rel="noreferrer"><strong>واتساب</strong><span>تواصل معنا مباشرة</span></a></div></div>
           <div className="contact-mark"><img src={symbolImage} alt="" /><span>ACADEMIX<br />SOLUTION EDU</span></div>
         </section>
       </main>
