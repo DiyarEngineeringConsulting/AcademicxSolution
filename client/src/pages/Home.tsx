@@ -4,9 +4,7 @@ import { ArrowLeft, ArrowUpLeft, Check, ChevronDown, Menu, X } from "lucide-reac
 import RequestModal from "@/components/RequestModal";
 import { Link } from "wouter";
 
-const heroImage = "/manus-storage/academix-hero_42b8925b.jpg";
-const symbolImage = "/manus-storage/academix-symbol_2728d762.png";
-const paperTexture = "/manus-storage/academix-paper-texture_df0d7ee1.jpg";
+const heroImage = "https://d2xsxph8kpxj0f.cloudfront.net/310519663649825384/D9RoQWq4hzNcuC2xHpmFx3/hero-background-jcCwN2TUxMJnbwzu293pDU.webp";
 
 const services = [
   { number: "01", label: "ACADEMIC", title: "حل الواجبات", body: "حل شامل وسريع لجميع الواجبات الدراسية بجودة عالية", tags: ["واجبات", "دراسة"] },
@@ -92,7 +90,7 @@ export default function Home() {
     <div className="site-shell" dir="rtl">
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="brand" href="#top" onClick={closeMenu} aria-label="Academix Solution EDU">
-          <img src={symbolImage} alt="" className="brand-symbol" />
+          <span className="brand-symbol brand-symbol-css" aria-hidden="true" />
           <span className="brand-wordmark"><strong>Academix</strong><small>Solution EDU</small></span>
         </a>
         <nav id="main-nav" className={`desktop-nav ${menuOpen ? "is-open" : ""}`} aria-label="التنقل الرئيسي">
@@ -149,7 +147,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="original-about" id="about" style={{ backgroundImage: `linear-gradient(rgba(235,227,219,.96),rgba(235,227,219,.96)), url(${paperTexture})` }}>
+        <section className="original-about" id="about">
           <div className="section-kicker"><SignalMatrix index="02" /><span>ABOUT ACADEMIX</span></div>
           <div className="original-about-grid">
             <div><h2>لماذا <em>نحن؟</em></h2><p>ACADEMIX SOLUTION هي منصة متخصصة في تقديم حلول أكاديمية وتقنية متكاملة. نجمع بين الخبرة العميقة والتكنولوجيا الحديثة لضمان نجاحك.</p><div className="feature-list">{originalFeatures.map(feature => <span key={feature}><Check size={17} />{feature}</span>)}</div></div>
@@ -177,12 +175,12 @@ export default function Home() {
         <section className="contact-section" id="contact">
           <div className="contact-grid" aria-hidden="true" />
           <div className="contact-content"><div className="section-kicker"><SignalMatrix index="06" /><span>CONTACT ACADEMIX</span></div><h2>تواصل <em>معنا.</em></h2><p>نحن هنا للإجابة على جميع استفساراتك والمساعدة في احتياجاتك.</p><div className="contact-links"><a href="tel:+967739750294"><strong>الهاتف</strong><span>+967 739 750 294</span></a><a href="mailto:academicx.solution@gmail.com"><strong>البريد الإلكتروني</strong><span>academicx.solution@gmail.com</span></a><a href="https://t.me/AcademicxSolution" target="_blank" rel="noreferrer"><strong>التليجرام</strong><span>AcademicxSolution</span></a><a href="https://wa.me/967739750294" target="_blank" rel="noreferrer"><strong>واتساب</strong><span>تواصل معنا مباشرة</span></a></div></div>
-          <div className="contact-mark"><img src={symbolImage} alt="" /><span>ACADEMIX<br />SOLUTION EDU</span></div>
+          <div className="contact-mark"><span className="brand-symbol brand-symbol-css" aria-hidden="true" /><span>ACADEMIX<br />SOLUTION EDU</span></div>
         </section>
       </main>
 
       <RequestModal isOpen={requestOpen} onClose={() => setRequestOpen(false)} serviceName={selectedService} />
-      <footer className="site-footer"><div className="footer-brand"><img src={symbolImage} alt="" /><span>Academix<br /><small>Solution EDU</small></span></div><p>حلول أكاديمية وتقنية متكاملة لنجاحك.</p><div className="footer-meta"><Link href="/privacy">سياسة الخصوصية</Link><Link href="/terms">شروط الاستخدام</Link><a href="#top">العودة للأعلى ↑</a></div></footer>
+      <footer className="site-footer"><div className="footer-brand"><span className="brand-symbol brand-symbol-css" aria-hidden="true" /><span>Academix<br /><small>Solution EDU</small></span></div><p>حلول أكاديمية وتقنية متكاملة لنجاحك.</p><div className="footer-meta"><Link href="/privacy">سياسة الخصوصية</Link><Link href="/terms">شروط الاستخدام</Link><a href="#top">العودة للأعلى ↑</a></div></footer>
     </div>
   );
 }

@@ -1,0 +1,9 @@
+.git
+.manus-logs
+dist
+node_modules
+terminal_full_output
+server
+attached_assets
+docs
+todo.md
