@@ -180,7 +180,7 @@ export default function Home() {
       </main>
 
       <RequestModal isOpen={requestOpen} onClose={() => setRequestOpen(false)} serviceName={selectedService} />
-      <footer className="site-footer"><div className="footer-brand"><img className="brand-logo brand-logo-footer" src={brandLogo} alt="Academix Solution" /></div><p>حلول أكاديمية وتقنية متكاملة لنجاحك.</p><div className="footer-meta"><Link href="/privacy">سياسة الخصوصية</Link><Link href="/terms">شروط الاستخدام</Link><a href="#top">العودة للأعلى ↑</a></div></footer>
+      <footer className="site-footer"><div className="footer-brand"><img className="brand-logo brand-logo-footer" src={brandLogo} alt="Academix Solution" /></div><div className="footer-copy"><p>حلول أكاديمية وتقنية متكاملة لنجاحك.</p><small className="footer-copyright">© 2026 Academix Solution. جميع الحقوق محفوظة.</small></div><div className="footer-meta"><Link href="/privacy">سياسة الخصوصية</Link><Link href="/terms">شروط الاستخدام</Link><a href="#top">العودة للأعلى ↑</a></div></footer>
     </div>
   );
 }
