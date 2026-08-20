@@ -5,6 +5,7 @@ import RequestModal from "@/components/RequestModal";
 import { Link } from "wouter";
 
 const heroImage = "https://d2xsxph8kpxj0f.cloudfront.net/310519663649825384/D9RoQWq4hzNcuC2xHpmFx3/hero-background-jcCwN2TUxMJnbwzu293pDU.webp";
+const brandLogo = "https://raw.githubusercontent.com/DiyarEngineeringConsulting/Omaraltawil/main/brand-assets/academix-solution-wordmark-transparent.png";
 
 const services = [
   { number: "01", label: "ACADEMIC", title: "حل الواجبات", body: "حل شامل وسريع لجميع الواجبات الدراسية بجودة عالية", tags: ["واجبات", "دراسة"] },
@@ -90,8 +91,7 @@ export default function Home() {
     <div className="site-shell" dir="rtl">
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="brand" href="#top" onClick={closeMenu} aria-label="Academix Solution EDU">
-          <span className="brand-symbol brand-symbol-css" aria-hidden="true" />
-          <span className="brand-wordmark"><strong>Academix</strong><small>Solution EDU</small></span>
+          <img className="brand-logo brand-logo-header" src={brandLogo} alt="Academix Solution" />
         </a>
         <nav id="main-nav" className={`desktop-nav ${menuOpen ? "is-open" : ""}`} aria-label="التنقل الرئيسي">
           <a href="#services" onClick={closeMenu}>الخدمات</a>
@@ -107,7 +107,7 @@ export default function Home() {
       </header>
 
       <main id="top">
-        <section className="hero-section" style={{ backgroundImage: `linear-gradient(90deg, rgba(9,8,8,.28), rgba(9,8,8,.78)), url(${heroImage})` }}>
+        <section className="hero-section" style={{ backgroundImage: `linear-gradient(90deg, rgba(14,44,57,.34), rgba(14,44,57,.88)), url(${heroImage})` }}>
           <div className="hero-grid" aria-hidden="true" />
           <div className="hero-content reveal">
             <div className="eyebrow"><SignalMatrix index="00" /><span>ACADEMIX / EDUCATION SOLUTIONS</span></div>
@@ -175,12 +175,12 @@ export default function Home() {
         <section className="contact-section" id="contact">
           <div className="contact-grid" aria-hidden="true" />
           <div className="contact-content"><div className="section-kicker"><SignalMatrix index="06" /><span>CONTACT ACADEMIX</span></div><h2>تواصل <em>معنا.</em></h2><p>نحن هنا للإجابة على جميع استفساراتك والمساعدة في احتياجاتك.</p><div className="contact-links"><a href="tel:+967739750294"><strong>الهاتف</strong><span>+967 739 750 294</span></a><a href="mailto:academicx.solution@gmail.com"><strong>البريد الإلكتروني</strong><span>academicx.solution@gmail.com</span></a><a href="https://t.me/AcademicxSolution" target="_blank" rel="noreferrer"><strong>التليجرام</strong><span>AcademicxSolution</span></a><a href="https://wa.me/967739750294" target="_blank" rel="noreferrer"><strong>واتساب</strong><span>تواصل معنا مباشرة</span></a></div></div>
-          <div className="contact-mark"><span className="brand-symbol brand-symbol-css" aria-hidden="true" /><span>ACADEMIX<br />SOLUTION EDU</span></div>
+          <div className="contact-mark"><img className="brand-logo brand-logo-contact" src={brandLogo} alt="Academix Solution" /></div>
         </section>
       </main>
 
       <RequestModal isOpen={requestOpen} onClose={() => setRequestOpen(false)} serviceName={selectedService} />
-      <footer className="site-footer"><div className="footer-brand"><span className="brand-symbol brand-symbol-css" aria-hidden="true" /><span>Academix<br /><small>Solution EDU</small></span></div><p>حلول أكاديمية وتقنية متكاملة لنجاحك.</p><div className="footer-meta"><Link href="/privacy">سياسة الخصوصية</Link><Link href="/terms">شروط الاستخدام</Link><a href="#top">العودة للأعلى ↑</a></div></footer>
+      <footer className="site-footer"><div className="footer-brand"><img className="brand-logo brand-logo-footer" src={brandLogo} alt="Academix Solution" /></div><p>حلول أكاديمية وتقنية متكاملة لنجاحك.</p><div className="footer-meta"><Link href="/privacy">سياسة الخصوصية</Link><Link href="/terms">شروط الاستخدام</Link><a href="#top">العودة للأعلى ↑</a></div></footer>
     </div>
   );
 }

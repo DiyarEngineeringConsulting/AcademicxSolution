@@ -1,4 +1,4 @@
-/* Design direction: Editorial Signal Pulse — Arabic legal reading surface, ink header, warm paper document, Coral Pulse navigation. */
+/* Design direction: Sapphire Teal editorial surface — Arabic legal reading, misty ivory document, approved Academix mark. */
 import type { ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { Link } from "wouter";
@@ -12,11 +12,13 @@ type LegalPageProps = {
   children?: ReactNode;
 };
 
+const brandLogo = "https://raw.githubusercontent.com/DiyarEngineeringConsulting/Omaraltawil/main/brand-assets/academix-solution-wordmark-transparent.png";
+
 export default function LegalPage({ eyebrow, title, sections, children }: LegalPageProps) {
   return (
     <main className="legal-page" dir="rtl">
       <header className="legal-header">
-        <Link className="legal-brand" href="/"><span>Academix</span><small>Solution EDU</small></Link>
+        <Link className="legal-brand" href="/"><img className="brand-logo brand-logo-legal" src={brandLogo} alt="Academix Solution" /></Link>
         <Link className="legal-back" href="/"><ArrowRight size={17} /> العودة إلى الرئيسية</Link>
       </header>
       <section className="legal-hero"><span>{eyebrow}</span><h1>{title}</h1><p>هذه الصفحة جزء من موقع ACADEMIX SOLUTION وتعرض النص المعتمد في المصدر السابق.</p></section>
